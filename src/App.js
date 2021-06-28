@@ -1,17 +1,17 @@
 import './App.css';
 import MovieList from './components/MovieList';
 import {useState} from 'react';
-import Movie from './components/Movies';
 
 
 function App() {
-  const topMovies = ['Hitman\'s Wife\'s Bodyguard','A Quiet Place Part II','	Cruella','	In the Heights','Wrath of Man','Spirit Untamed','Nobody','Those Who Wish Me Dead'];
-  const [movies, setMovies] = useState(topMovies);
+  // const topMovies = ['Hitman\'s Wife\'s Bodyguard','A Quiet Place Part II','	Cruella','	In the Heights','Wrath of Man','Spirit Untamed','Nobody','Those Who Wish Me Dead'];
+  // const [movies, setMovies] = useState(topMovies);
   const [search, setSearch] = useState(null);
   const addMovie = () => {
-    const name = Movie(search);
-    topMovies.push(name.Title);
-    setMovies(topMovies);
+    // const name = Movie(search).Title;
+    // topMovies.push(name);
+    // setMovies(topMovies);
+    // return topMovies;
   }
 
   return (
@@ -26,7 +26,7 @@ function App() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link active" ariaCurrent="page" href="www.google.com">Home</a>
+                  <a className="nav-link active" aria-current="page" href="www.google.com">Home</a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="www.google.com">Link</a>
@@ -43,18 +43,18 @@ function App() {
                   </ul>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link disabled" href="www.google.com" tabindex="-1" ariaDisabled="true">Disabled</a>
+                  <a className="nav-link disabled" href="www.google.com" tabIndex="-1" aria-disabled="true">Disabled</a>
                 </li>
               </ul>
               <form className="d-flex">
-                <input className="form-control me-2" type="text" placeholder="Search" value={search} 
+                {/* <input className="form-control me-2" type="text" placeholder="Search" value={search} 
                   onChange={(e) => setSearch((prev) =>{
                                                           prev = e.target.value;
                                                           return prev;
                                                           })
                           }
-                />
-                <button className="btn btn-outline-success" type="submit" onClick={addMovie}>Add</button>
+                /> */}
+                <button className="btn btn-outline-success" type="submit" onClick={() =>addMovie()}>Add</button>
               </form>
             </div>
           </div>
@@ -117,7 +117,7 @@ function App() {
   </div>
         </div>
         <div className='col-md-9'>
-          <MovieList topMovies={movies}/>
+          <MovieList />
         </div>
       </div>
       
