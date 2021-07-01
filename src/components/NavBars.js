@@ -1,28 +1,20 @@
-import './App.css';
-import {useState} from 'react';
-import Index from './pages/index';
-import Details from './pages/Details';
-import { Route, Switch, Link } from 'react-router-dom';
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
-function App() {
 
-  const [newMovie, setNewMovie] = useState('');
+
+export default function NavBars({handleClick,...props}){
+
   const [search, setSearch] = useState('');
 
-  const handleClick = () =>{
-    setNewMovie(search);
-    clearSearch();
-  }
+  // function handleClick(e){
+  //   e.preventDefault();
+  //   props.setNewMovie(search);
+  // }
 
-  const clearSearch = () => {
-    setSearch('');
-    console.log('search state : ' , search);
-  }
-
-  return (
-    <div className="container">
-      <div className='row'>
+  return(
+    <div className='row'>
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
       <div className="container-fluid">
         <a className="navbar-brand" href="www.google.com">My Movies</a>
@@ -35,7 +27,7 @@ function App() {
               <Link className="nav-link active" to='/'>Home</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" href="www.google.com">Search</a>
+              <Link className="nav-link active" to='/Search'>Search</Link>
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="www.google.com" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -55,26 +47,16 @@ function App() {
             <input className="form-control me-2" type="text" placeholder="Search" value={search} 
               onChange={(e) => setSearch((prev) =>{
                                                       prev = e.target.value;
+                                                      props.name = prev;
                                                       return prev;
                                                       })
                       }
             />
-            <button className="btn btn-outline-success" type="submit" onClick={handleClick}>Add</button>
+            <button className="btn btn-outline-success" type="submit" onClick={handleClick}>Search</button>
         </div>
       </div>
     </nav>
   </div>
-     
-      <Switch>
-        <Route path='/details/:name' render={(props) =>(<Details {...props}/>)}>
-          {/* <Details /> */}
-        </Route>
-        <Route exact path='/'>
-          <Index newMovie={newMovie}/>
-        </Route>
-      </Switch>
-    </div>
-  );
+  )
+    
 }
-
-export default App;
